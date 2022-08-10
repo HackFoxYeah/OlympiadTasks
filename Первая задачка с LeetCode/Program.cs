@@ -1,38 +1,38 @@
 using System;
 namespace ConsoleApp1
 {
-
       /*<summary>
-       учитывая массив целых чисел nums и целочисленное целевое значение, верните индексы двух чисел таким образом,
-       чтобы они складывались в целевое значение.
-       вы можете предположить, что каждый ввод будет иметь ровно одно решение.
-       вы можете вернуть ответ в любом порядке.
+      
+       Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+       You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+       You can return the answer in any order.
+       
       <summary>*/
 
     internal class Program
     {
 
-        public static int[] PairOfNumber(int[] array, int value)
+        public static int[] TwoSum(int[] array, int target)
         {
-            for (int i = 0; i < array.Length; i++)
+            int temp;
+                      
+            var list = new List<int>();
+
+            list.AddRange(array);
+
+            for (int i = 0; i < list.Count; i++)
             {
-                for (int j = 0; j < array.Length; j++)
+                temp = target - array[i];
+
+                if (list.Contains(temp) && Array.IndexOf(array, temp) != i)
                 {
-                    if (array[i] + array[j] == value)
-                    {
-                        return new int[2] { array[i], array[j] };
-                    }
+                    return new int[] { Array.IndexOf(array, temp), i };
                 }
             }
-            return new int[1] { 0 };
-        }
 
-        static void Main(string[] args)
-        {
-            int[] array = { 5, 1, 3 },
-                  array_2 = PairOfNumber(array, 4);
-
-            Console.Write($"[{array_2[0]},{array_2[1]}]\n");
-        }
+            return null;
+        }        
     }
 }
