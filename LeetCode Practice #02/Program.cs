@@ -12,45 +12,13 @@ namespace ConsoleApp1
     internal class Program
     {
         public static int[] RunningSum(int[] array)
-        {
-            int temp;
-
-            int[] arr_copy = new int[array.Length];             
-
-            for (int i = 0; i < array.Length; i++)
-            {                
-                temp = 0;
-
-                for (int j = 0; j <= i; j++)
-                {
-                    temp += array[j];
-                }
-
-                arr_copy[i] = temp;
-            }           
-            return arr_copy;
-        }
-
-        static void Main(string[] args)
-        {
-            int[] testArr = { 1, 2, 3, 4, 5 };
-
-            int[] arrResult = RunningSum(testArr);
-
-            Console.Write("[");
-
-            for (int i = 0; i < arrResult.Length; i++)
+        {             
+            for (int i = 1; i < array.Length; i++)
             {
-                if (i == arrResult.Length - 1)
-                {
-                    Console.Write(arrResult[i] + "]\n");
-                }
-
-                else
-                {
-                    Console.Write(arrResult[i] + ", ");
-                }
+                array[i] += array[i - 1];
             }
-        }
+
+            return array;
+        }       
     }
 }
