@@ -13,44 +13,20 @@ namespace ConsoleApp1
     {
         public static int GetPivotIndex(int[] array)
         {
-            int leffSideSum,
-                rightSideSum;
+            int sum = 0, leftSum = 0;
 
             for (int i = 0; i < array.Length; i++)
             {
-                leffSideSum = rightSideSum = 0;
+                sum += array[i];
+            }
 
-                if (i == 0)
-                {
-                    leffSideSum = 0;
-                }
-                else
-                {
-                    for (int j = 0; j < i; j++)
-                    {
-                        leffSideSum += array[j];
-                    }
-                }
-
-                for (int k = i + 1; k <= array.Length - 1; k++)
-                {
-                    rightSideSum += array[k];
-                }
-
-                if (leffSideSum == rightSideSum)
-                {
-                    return i;
-                }
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (leftSum == sum - leftSum - array[i]) return i;
+                leftSum += array[i];
             }
 
             return -1;
-        }
-
-        static void Main(string[] args)
-        {
-            int[] arr = { 1, 7, 3, 6, 5, 6 };
-
-            System.Console.WriteLine(GetPivotIndex(arr));
-        }
+        }              
     }
 }
