@@ -11,12 +11,12 @@ public int ReverseNumber(int value)
 
                 value /= 10;
 
-                if (reverseValue > Int32.MaxValue / 10 || (reverseValue == Int32.MaxValue / 10 && temp > 7))
+                if (reverseValue > Int32.MaxValue / 10 || (reverseValue == Int32.MaxValue / 10 && temp > 7)) // защита от выхода за пределы int32
                 {
                     return 0;
                 }
 
-                if (reverseValue < Int32.MinValue / 10 || (reverseValue == Int32.MinValue / 10 && temp < -8))
+                if (reverseValue < Int32.MinValue / 10 || (reverseValue == Int32.MinValue / 10 && temp < -8)) // защита от выхода за пределы int32
                 {
                     return 0;
                 }
